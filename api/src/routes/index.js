@@ -82,7 +82,6 @@ router.post('/pokemons', async (req, res)=> { 		//recibe types como un array de 
 			image
 		})
 		
-	//	types && types[0] && newPokemon.addTypes(types) || newPokemon.addTypes([1])
 		let typeDb = await Type.findAll({
 			whrere: { name : types}
 		})
