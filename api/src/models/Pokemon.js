@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
       },
-    Id:{
+    id:{
       type: DataTypes.UUID, //Me crea un número random con letras y numeros que es específico y no se repite
       defaultValue: DataTypes.UUIDV4, //aleatorio
       allowNull:false, // es para que si o sí tenga un id, al decir false me exige que tenga un id
