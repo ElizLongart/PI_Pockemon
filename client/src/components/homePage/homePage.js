@@ -14,7 +14,7 @@ export default function HomePage(){
 
     useEffect(()=> {
         dispatch(getAllPokemons())                //es parecido a usar mapDispatchToProps()
-    }, [dispatch]);                                        // lo dejo vacio porque no depende de nada para ejecutarse
+    }, [dispatch]);                                        
 
     function handleClick(e){
         e.preventDefault();
@@ -47,7 +47,6 @@ return (
             </div>
             <select>
                 <option>Type</option>
-                <span> ▼ </span>
                 <option value='All'>All</option>
                 <option value='Ice'>Ice</option>
                 <option value='Fighting'>Fighting</option>
@@ -70,6 +69,7 @@ return (
                 <option value='Shadow'>Shadow</option>
                 <option value='Unknown'>Unknown</option>
             </select>
+        <Link to= '/pokemons'>Create Pokemon</Link>
         </div>  
         {
         (allPokemons.length) ? (allPokemons.map((p) => {
@@ -85,7 +85,6 @@ return (
                      <img src="https://c.tenor.com/BINsHS7Uo-0AAAAi/temple-loader.gif" alt="Loading" />
                 </>
             }    
-        <Link to= '/pokemons'>Create Pokemon</Link>
     </div> 
 )
 
