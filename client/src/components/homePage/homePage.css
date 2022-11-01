@@ -1,0 +1,11 @@
+.allPokemons{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+        grid-auto-rows: minmax(50px, auto);
+}
+
+.create{
+        display: flex;
+        justify-content: center;
+}

@@ -1,15 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllPokemons } from '../../redux/actions';
 import PokemonCard from '../pokemonCard/pokemonCard';
+import Paginado from '../paginado/paginado';
 import './homePage.css';
 
 
 export default function HomePage(){
     const dispatch = useDispatch();
 
-    const allPokemons = useSelector(state => state.pokemons) //es parecido a usar mapStateToProps() 
+    const allPokemons = useSelector(state => state.pokemons) 
+    
+    const [currentPage, setCurrentPage] = useState(1)  //Mi página actua que arranca en 1
+    const [pokemonsPerPage, setPokemonsPerPage] = useState(12) //
+    const indexLastPokemonPerPage = currentPage * pokemonsPerPage  //El índice de mi último personaje. En un principio es 12
+    const indexFirstPokemonPerPage = indexLastPokemonPerPage - pokemonsPerPage  //El índice del primer personaje. Será igual a 0 en la primera
+    const currentPokemons = allPokemons.slice(indexFirstPokemonPerPage, indexLastPokemonPerPage) //Me devuelve un arreglo que tomará desde el primer índice hasta el último índice
+
+    const paginado = (pageNumber) =>{
+        setCurrentPage(pageNumber)
+    };
 
 
     useEffect(()=> {
@@ -69,22 +80,31 @@ return (
                 <option value='Shadow'>Shadow</option>
                 <option value='Unknown'>Unknown</option>
             </select>
-        <Link to= '/pokemons'>Create Pokemon</Link>
-        </div>  
+        <div className='create'>
+            <Link to= '/pokemons'>Create Pokemon</Link>
+        </div>
+        </div>
+        <div className='allPokemons'>
         {
-        (allPokemons.length) ? (allPokemons.map((p) => {
-                    return(
-                        <fragment>
-                            <Link to={`/home/${p.id}`}>
+        (allPokemons.length) ? 
+            (currentPokemons.map((p) => {
+                return(
+                    <fragment>
+                        <Link to={`/home/${p.id}`}>
                             <PokemonCard name={p.name} image={p.image} types={p.types} key={p.id}/>
-                        	</Link>
-                        </fragment>
-                    );
-                })) :
-                <>
-                     <img src="https://c.tenor.com/BINsHS7Uo-0AAAAi/temple-loader.gif" alt="Loading" />
-                </>
-            }    
+                        </Link>
+                    </fragment>
+                );
+            })) :
+            <>
+                <img src="https://c.tenor.com/BINsHS7Uo-0AAAAi/temple-loader.gif" alt="Loading" />
+            </>
+        }
+        </div>   
+        <Paginado
+        pokemonsPerPage={pokemonsPerPage}
+        allPokemons={allPokemons.length}
+        paginado={paginado}/>   
     </div> 
 )
 

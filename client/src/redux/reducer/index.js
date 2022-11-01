@@ -2,7 +2,7 @@ import { GET_ALL_POKEMONS } from "../actions/actionsType";
 
 
 export const initialState={
-    allPokemons: [],
+    //allPokemons: [],
     pokemons: [],
 }
 
@@ -12,7 +12,7 @@ export default function rootReducer (state = initialState, action){
             return {
                 ...state,
                 pokemons: action.payload, //mandame todo lo que te da get_all_pokemon
-                allPokemons: action.payload
+               // allPokemons: action.payload
             }    
         default:
             return state;
