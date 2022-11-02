@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_POKEMONS } from './actionsType';
+import { FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_TYPES } from './actionsType';
 
 export function getAllPokemons(){
     return async function(dispatch){   
@@ -11,4 +11,21 @@ export function getAllPokemons(){
             payload: json.data
         })
     } 
+}
+
+export const getTypes= ()=> dispatch=> {
+	return axios.get('/types')
+	.then(response=> response.data)
+	.then(data=> 
+        dispatch({
+            type: GET_TYPES, 
+            payload: data
+        }))
+};
+
+export function filterByType(pokemonType){
+    return{
+        type: FILTER_BY_TYPE,
+        payload: pokemonType
+    }
 }

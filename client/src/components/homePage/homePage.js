@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllPokemons } from '../../redux/actions';
+import { filterByType, getAllPokemons } from '../../redux/actions';
 import PokemonCard from '../pokemonCard/pokemonCard';
 import Paginado from '../paginado/paginado';
 import './homePage.css';
+import FilterByType from '../filterByType/filterByType';
 
 
 export default function HomePage(){
     const dispatch = useDispatch();
 
     const allPokemons = useSelector(state => state.pokemons) 
+
     
     const [currentPage, setCurrentPage] = useState(1)  //Mi página actua que arranca en 1
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12) //
@@ -18,6 +20,7 @@ export default function HomePage(){
     const indexFirstPokemonPerPage = indexLastPokemonPerPage - pokemonsPerPage  //El índice del primer personaje. Será igual a 0 en la primera
     const currentPokemons = allPokemons.slice(indexFirstPokemonPerPage, indexLastPokemonPerPage) //Me devuelve un arreglo que tomará desde el primer índice hasta el último índice
 
+    
     const paginado = (pageNumber) =>{
         setCurrentPage(pageNumber)
     };
@@ -30,6 +33,11 @@ export default function HomePage(){
     function handleClick(e){
         e.preventDefault();
         dispatch(getAllPokemons());
+    }
+
+    function handleFilterType(e){
+        setCurrentPage(1);
+        dispatch(filterByType(e.target.value))
     }
 
 return (
@@ -56,30 +64,7 @@ return (
                 <button value='Existing'>Existing</button>
                 <button value='New'>New</button>
             </div>
-            <select>
-                <option>Type</option>
-                <option value='All'>All</option>
-                <option value='Ice'>Ice</option>
-                <option value='Fighting'>Fighting</option>
-                <option value='Flying'>Flying</option>
-                <option value='Poison'>Poison</option>
-                <option value='Ground'>Ground</option>
-                <option value='Rock'>Rock</option>
-                <option value='Bug'>Bug</option>
-                <option value='Normal'>Normal</option>
-                <option value='Ghost'>Ghost</option>
-                <option value='Steel'>Steel</option>
-                <option value='Water'>Water</option>
-                <option value='Fire'>Fire</option>
-                <option value='Grass'>Grass</option>
-                <option value='Electric'>Electric</option>
-                <option value='Psychic'>Psychic</option>
-                <option value='Dragon'>Dragon</option>
-                <option value='Dark'>Dark</option>
-                <option value='Fairy'>Fairy</option>
-                <option value='Shadow'>Shadow</option>
-                <option value='Unknown'>Unknown</option>
-            </select>
+            <FilterByType handleFilterType={handleFilterType}/>
         <div className='create'>
             <Link to= '/pokemons'>Create Pokemon</Link>
         </div>
