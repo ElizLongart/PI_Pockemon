@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_TYPES } from './actionsType';
+import { FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_TYPES } from './actionsType';
 
 export function getAllPokemons(){
     return async function(dispatch){   
@@ -13,7 +13,7 @@ export function getAllPokemons(){
     } 
 }
 
-export const getTypes= ()=> dispatch=> {
+export function getTypes(dispatch) {
 	return axios.get('/types')
 	.then(response=> response.data)
 	.then(data=> 
@@ -27,5 +27,12 @@ export function filterByType(pokemonType){
     return{
         type: FILTER_BY_TYPE,
         payload: pokemonType
+    }
+}
+
+export function filterByStorage(payload){
+    return {
+        type: FILTER_BY_STORAGE,
+        payload
     }
 }
