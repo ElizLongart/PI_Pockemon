@@ -66,6 +66,6 @@ export function getNamePokemons(name){
 }
 
 export const createPokemon= (infoPokemon)=> dispatch=> {
-	axios.post('/pokemons', infoPokemon);
+	axios.post('http://localhost:3001/pokemons', infoPokemon);
 	return {type: CREATE_POKEMON}
 };

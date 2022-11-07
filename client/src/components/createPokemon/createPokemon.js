@@ -27,7 +27,7 @@ export default function CreatePokemon(){
     
     useEffect(()=>{
         dispatch(getTypes())
-    }, []);
+    }, [dispatch]);
     
     function handleChange(e){
         setInput({

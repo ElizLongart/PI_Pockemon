@@ -76,9 +76,11 @@ return (
                 <Sort handleAlphabeticalOrder={handleAlphabeticalOrder} handleSortByAttack={handleSortByAttack} />
             <button onClick={e=> {handleClickAll(e)}}>
                 Reload
-            </button>
-                <CreatePokemon/>
+            </button>            
         </div>
+        <Link  to="/pokemons" id="buttonCreate">
+			<button id="create">Create Pokemons</button>
+		</Link>
         <div className='allPokemons'>
         {
         (allPokemons.length) ? 
