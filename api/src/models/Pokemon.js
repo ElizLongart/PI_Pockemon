@@ -21,49 +21,49 @@ module.exports = (sequelize) => {
     },
     hp: {
       type: DataTypes.INTEGER,
-      defaultValue: 55,
+      defaultValue: 10,
       validate: {
-        max: 150,
-        min: 15
+        max: 120,
+        min: 1
       }
     },
     attack: {
       type: DataTypes.INTEGER,
-      defaultValue: 48,
+      defaultValue: 40,
       validate: {
-        max: 150,
-        min: 10
+        max: 190,
+        min: 1
       }
     },
     defense: {
       type: DataTypes.INTEGER,
-      defaultValue: 65,
+      defaultValue: 30,
       validate: {
-        max: 150,
-        min: 15
+        max: 230,
+        min: 5
       }
     },
     speed: {
       type: DataTypes.INTEGER,
-      defaultValue: 45,
+      defaultValue: 58,
       validate: {
-        max: 150,
-        min: 10
+        max: 140,
+        min: 58
       }
     },
     height: {
       type: DataTypes.INTEGER,
-      defaultValue: 2,
+      defaultValue: 5,
       validate: {
-        max: 10,
+        max: 20,
         min: 1
       }
     },
     weight: {
       type: DataTypes.INTEGER,
-      defaultValue: 300,
+      defaultValue: 50,
       validate: {
-        max: 1500,
+        max: 100,
         min: 1
       }
     },  

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALPHABETICAL_ORDER, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_TYPES, SORT_BY_ATTACK } from './actionsType';
+import { ALPHABETICAL_ORDER, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_TYPES, SORT_BY_ATTACK } from './actionsType';
 
 export function getAllPokemons(){
     return async function(dispatch){   
@@ -11,14 +11,16 @@ export function getAllPokemons(){
     } 
 }
 
-export function getTypes(dispatch) {
-	return axios.get('/types')
-	.then(response=> response.data)
-	.then(data=> 
-        dispatch({
+export function getTypes() {
+    return async function(dispatch){
+        var info = await axios.get("http://localhost:3001/types",{
+
+        })
+        return dispatch({
             type: GET_TYPES, 
-            payload: data
-        }))
+            payload: info.data
+        })
+    }
 };
 
 export function filterByType(pokemonType){
@@ -62,3 +64,8 @@ export function getNamePokemons(name){
     }
     }
 }
+
+export const createPokemon= (infoPokemon)=> dispatch=> {
+	axios.post('/pokemons', infoPokemon);
+	return {type: CREATE_POKEMON}
+};
