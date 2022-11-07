@@ -8,6 +8,7 @@ import './homePage.css';
 import FilterByType from '../filterByType/filterByType';
 import FilterByStorage from '../filterByStorage/filterByStorage';
 import Sort from '../sort/sort';
+import SearchBar from '../searchBar/searchBar.js';
 
 
 export default function HomePage(){
@@ -65,18 +66,19 @@ return (
         <h1>Pokemon</h1>
         <h3>"God helps the early riser, or in this case he gets his Pokémon!!"</h3>
         <p>Profesor Oak</p>
-        <button onClick={e=> {handleClickAll(e)}}>
-            Reload
-        </button>
+        <SearchBar setCurrentPage={setCurrentPage}/>
         <div>
             <h3> Filter by</h3>
                 <FilterByStorage handleFilterByStorage={handleFilterByStorage} handleClickAll={handleClickAll}/>
                 <FilterByType handleFilterType={handleFilterType}/>
             <h3> Sort by</h3> 
                 <Sort handleAlphabeticalOrder={handleAlphabeticalOrder} handleSortByAttack={handleSortByAttack} />
-        <div className='create'>
-            <Link to= '/pokemons'>Create Pokemon</Link>
-        </div>
+            <button onClick={e=> {handleClickAll(e)}}>
+                Reload
+            </button>
+            <div className='create'>
+                <Link to= '/pokemons'>Create Pokemon</Link>
+            </div>
         </div>
         <div className='allPokemons'>
         {

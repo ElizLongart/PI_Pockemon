@@ -6,16 +6,12 @@ const { getAllPokemons } = require('../routesFunctions');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-
 const router = Router();
 
 // Configurar los routers
 
-
-
 router.get('/pokemons', async (req, res) => {
 	const name  = req.query.name
-	
  	try {
 		let allPokemones = await getAllPokemons();
 		if (name) {
@@ -32,7 +28,6 @@ router.get('/pokemons', async (req, res) => {
 });
 
 router.get('/types', async (req, res)=> {
-
  	try {
 	const types = await Type.findAll({
 		attributes: ['name']
