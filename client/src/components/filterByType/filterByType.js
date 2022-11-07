@@ -29,7 +29,7 @@ export default function FilterByType({handleFilterType}) {
 		<>
 		<br/>
         <div>
-            <select onChange={e => handleFilterType(e)}>
+        <select onChange={e => handleFilterType(e)}>
                 <option value="All">All types</option>
                     {
                         types.map( (type) => (

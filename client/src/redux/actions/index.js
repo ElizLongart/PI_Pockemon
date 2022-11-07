@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_TYPES } from './actionsType';
+import { ALPHABETICAL_ORDER, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_TYPES, SORT_BY_ATTACK } from './actionsType';
 
 export function getAllPokemons(){
     return async function(dispatch){   
@@ -36,3 +36,18 @@ export function filterByStorage(payload){
         payload
     }
 }
+
+export function alphabeticalOrder(order){
+    return{
+        type: ALPHABETICAL_ORDER,
+        payload: order,
+    }
+}
+
+export function sortByAttack(order){
+    return {
+        type: SORT_BY_ATTACK,
+        payload: order
+    }
+}
+

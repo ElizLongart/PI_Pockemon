@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterByStorage, filterByType, getAllPokemons } from '../../redux/actions';
+import { alphabeticalOrder, filterByStorage, filterByType, getAllPokemons, sortByAttack } from '../../redux/actions';
 import PokemonCard from '../pokemonCard/pokemonCard';
 import Paginado from '../paginado/paginado';
 import './homePage.css';
 import FilterByType from '../filterByType/filterByType';
 import FilterByStorage from '../filterByStorage/filterByStorage';
+import Sort from '../sort/sort';
 
 
 export default function HomePage(){
@@ -20,6 +21,8 @@ export default function HomePage(){
     const indexLastPokemonPerPage = currentPage * pokemonsPerPage  //El índice de mi último personaje. En un principio es 12
     const indexFirstPokemonPerPage = indexLastPokemonPerPage - pokemonsPerPage  //El índice del primer personaje. Será igual a 0 en la primera
     const currentPokemons = allPokemons.slice(indexFirstPokemonPerPage, indexLastPokemonPerPage) //Me devuelve un arreglo que tomará desde el primer índice hasta el último índice
+    const [order, setOrder] = useState(''); //Estado local para ordenar
+
 
     const paginado = (pageNumber) =>{
         setCurrentPage(pageNumber)
@@ -43,6 +46,20 @@ export default function HomePage(){
         dispatch(filterByStorage(e.target.value))
     }
 
+    function handleAlphabeticalOrder(e){
+        e.preventDefault();
+        dispatch(alphabeticalOrder(e.target.value))
+        setCurrentPage(1);                  //Para setear en la página 1
+        setOrder(`Sorting ${e.target.value}`)   //Es un estado local vacio y lo uso para que modifique el estado local y se renderice 
+    }
+
+    function handleSortByAttack(e){
+        e.preventDefault();
+        dispatch(sortByAttack(e.target.value))
+        setCurrentPage(1);                  //Para setear en la página 1
+        setOrder(`Sorting ${e.target.value}`)   //Es un estado local vacio y lo uso para que modifique el estado local y se renderice 
+    }
+
 return (
     <div className='home'> 
         <h1>Pokemon</h1>
@@ -50,21 +67,13 @@ return (
         <p>Profesor Oak</p>
         <button onClick={e=> {handleClickAll(e)}}>
             Reload
-        </button>  
+        </button>
         <div>
-            <select>
-                <option>Name</option>
-                <option value='Asc'>Ascending</option>
-                <option value='Desc'>Descending</option>
-            </select>
-            <select>
-                <option>Attack</option>
-                <option value='Highest'>Highest</option>
-                <option value='Lowest'>Lowest</option>
-            </select>
-            <FilterByStorage handleFilterByStorage={handleFilterByStorage} handleClickAll={handleClickAll}/>
-
-            <FilterByType handleFilterType={handleFilterType}/>
+            <h3> Filter by</h3>
+                <FilterByStorage handleFilterByStorage={handleFilterByStorage} handleClickAll={handleClickAll}/>
+                <FilterByType handleFilterType={handleFilterType}/>
+            <h3> Sort by</h3> 
+                <Sort handleAlphabeticalOrder={handleAlphabeticalOrder} handleSortByAttack={handleSortByAttack} />
         <div className='create'>
             <Link to= '/pokemons'>Create Pokemon</Link>
         </div>
