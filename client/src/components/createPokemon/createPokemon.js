@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { createPokemon, getTypes } from "../../redux/actions";
 import './createPokemon.css';
 
@@ -9,9 +9,9 @@ import './createPokemon.css';
 
 export default function CreatePokemon(){
     const dispatch = useDispatch();
-    const history = useHistory();  //Para que me devuelva al home luego de crear el personaje 
 
     const types = useSelector(state => state.types);
+
         
     const [input, setInput] = useState({
         name: '',
@@ -22,7 +22,8 @@ export default function CreatePokemon(){
         height:'',
         weight: '',
         image: '',
-        type: [],
+        type1: '',
+        type2: '',
     })
     
     useEffect(()=>{
@@ -37,14 +38,6 @@ export default function CreatePokemon(){
         console.log(input)
     }
 
-    function handleCheck(e){
-        if(e.target.checked){ //¿está marcado el input?
-            setInput({
-                ...input,
-                status: e.target.value
-            })
-        }
-    }
 
     function handleSubmit(e){
         e.preventDefault();
@@ -60,9 +53,9 @@ export default function CreatePokemon(){
             height:'',
             weight: '',
             image: '',
-            type: [],
+            type1: '',
+            type2: '',
         })
-        history.pushState('/home')
     }
     
     return (
@@ -155,30 +148,39 @@ export default function CreatePokemon(){
                     />
                     <div>
                     <h4>Choose up to 2 Pokemon types</h4>
-                    {
-                        types.map((type, index)=>{
+                    <div>
+              <select
+                name="type1"
+                onChange={handleChange}
+                value={input.type1}
+              >
+                <option value="Type 1">Type 1</option>
+                {types.map((type)=>{
                             return(
-                                <>
-                                    <input 
-                                        type="checkbox" 
-                                        id={`type${index + 1}`} 
-                                        name={type} 
-                                        value={index+1} 
-                                        className="checkInput"
-                                        onChange={handleCheck}
-                                    />
-                                    <label 
-                                    for={type} 
-                                    id={`label${type}`}>
-                                        {type}
-                                    </label>
-                                </>
+                                <option value={type.id} key={type.id}>
+                                    {type}
+                                </option>
                                     )
-                            })
-		            }
+                            })}
+              </select>
+              <select
+                name="type2"
+                onChange={handleChange}
+                value={input.type2}
+              >
+                <option value="Type 2">Type 2</option>
+                {types.map((type)=>{
+                            return(
+                                <option value={type.id} key={type.id}>
+                                    {type}
+                                </option>
+                                    )
+                            })}
+              </select>
+            </div>
                     </div>
                 <button>
-                    Send
+                    Create
                 </button>
                 </div>
             </form>

@@ -1,6 +1,7 @@
 const { Pokemon, Type } = require('../db');
 const axios = require('axios');
 
+let db = 40;
 const getApiInfo = async () => {
 
 	const pokemonsDataApi = [];
@@ -46,6 +47,36 @@ const getAllPokemons = async () => {
 	return allPokemons
 };
 
+/* async function addPokemon(req, res) {
+	const { hp, attack, defense, speed, height, weight, image, type1, type2 } =
+	  req.body;
+	let name = req.body.name.toLowerCase();
+	let pokemon = {
+	  id: ++db,
+	  name,
+	  hp,
+	  attack,
+	  defense,
+	  speed,
+	  height,
+	  weight,
+	  image,
+	};
+	try {
+	  let createdPokemon = await Pokemon.create(pokemon);
+	  const addType1 = await createdPokemon.addType(type1, {
+		through: "pokemon_type",
+	  });
+	  const addType2 = await createdPokemon.addType(type2, {
+		through: "pokemon_type",
+	  });
+	  return res.status(200).send("Sucesfully Created Pokemon");
+	} catch (error) {
+	  return error;
+	}
+  } */
+
 module.exports = {
 	getAllPokemons,
+	//addPokemon
 };

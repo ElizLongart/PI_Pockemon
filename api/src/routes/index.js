@@ -48,44 +48,42 @@ router.get('/types', async (req, res)=> {
 	} 
 });
 
-let id= 41; 
-router.post('/pokemons', async (req, res)=> { 		//recibe types como un array de ids [1, 2,...20]
-	const {
-		name, 
-		hp, 
-		attack, 
-		defense, 
-		speed, 
-		height, 
-		weight, 
-		image, 
-		types,
-		createdInDb
-	} = req.body;
-	
+/* router.post("/pokemons", async (req, res) => {
+	await addPokemon(req, res);
+  }); */
+
+  router.post("/pokemons", async (req, res, next) => { //Ruta de creacion del pokemon
 	try {
-		const newPokemon = await Pokemon.create({
-			name: name.toLowerCase(), 
-			hp, 
-			attack, 
-			defense, 
-			speed, 
-			height, 
-			weight, 
-			id: id++,
-			createdInDb, 
-			image
-		})
-		
-		let typeDb = await Type.findAll({
-			whrere: { name : types}
-		})
-		newPokemon.addTypes(typeDb)
-		return res.send('¡Congratulations! You have created a new pokemon');
-	} catch(e) {
-		res.status(400).send(e);
+	  let { name, image, hp, attack, defense, speed, height, weight, type} = req.body //Datos que necesito pedir
+  
+	  const newPokemon = await Pokemon.create({
+		name,
+		image,
+		hp,
+		attack,
+		defense,
+		speed,
+		height,
+		weight,
+	  });
+  
+	  if (!name) return res.json({ info: "El nombre es obligatorio" });
+  
+	  if(Array.isArray(type) && type.length){ //Consulto si lo que me llega en TYPES, es un arreglo y si tiene algo adentro.
+		let dbTypes = await Promise.all( //Armo una variable que dentro tendra una resolucion de promesas
+		  type.map((e) => { // Agarro la data de types y le hago un map para verificar que cada elemento exista en 
+			return Type.findOne({where:{ name: e}}) // nuestra tabla de tipos
+		  })
+		)
+	   await newPokemon.setTypes(dbTypes) //Una vez que se resuelva la promesa del Pokemon.create, le agrego los tipos
+  
+	   return res.send("Pokemon creado exitosamente");
+	  }
+	} catch (err) {
+		console.log(err)
+	  res.status(400).send("Error en data");
 	}
-});
+  })
 
 router.get('/pokemons/:idPokemon', async (req, res) => {
 	const idPokemon = req.params.idPokemon;

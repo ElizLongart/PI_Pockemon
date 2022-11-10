@@ -1,4 +1,4 @@
-import { ALPHABETICAL_ORDER, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_TYPES, SORT_BY_ATTACK } from "../actions/actionsType";
+import { ALPHABETICAL_ORDER, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_POKEMON_DETAIL, GET_TYPES, SORT_BY_ATTACK } from "../actions/actionsType";
 
 
 export const initialState={
@@ -107,6 +107,14 @@ export default function rootReducer (state = initialState, action){
                     ...state
                 };
 
+            case GET_POKEMON_DETAIL:
+                const details = (action.payload.id) ?
+                action.payload :
+                action.payoad[0]
+                return {
+                    ...state, 
+                    podemonDetails: details
+                }
         default:
             return state;
     }

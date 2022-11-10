@@ -9,8 +9,6 @@ import FilterByType from '../filterByType/filterByType';
 import FilterByStorage from '../filterByStorage/filterByStorage';
 import Sort from '../sort/sort';
 import SearchBar from '../searchBar/searchBar.js';
-import CreatePokemon from '../createPokemon/createPokemon';
-
 
 export default function HomePage(){
     const dispatch = useDispatch();

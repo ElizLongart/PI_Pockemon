@@ -3,6 +3,7 @@ import './App.css';
 import CreatePokemon from './components/createPokemon/createPokemon';
 import HomePage from './components/homePage/homePage';
 import LandingPage from './components/landingPage/landingPage';
+import PokemonDetail from './components/pokemonDetails/pokemonDetails';
 
 
 function App() {
@@ -16,8 +17,6 @@ function App() {
         </Switch>
       </div>
     </BrowserRouter>
-
-
   );
 }
 export default App;
