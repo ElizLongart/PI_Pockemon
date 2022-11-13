@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALPHABETICAL_ORDER, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_POKEMON_DETAIL, GET_TYPES, SORT_BY_ATTACK } from './actionsType';
+import { ALPHABETICAL_ORDER, CLEAR_POKEMON_BY_ID, CLEAR_STATE, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_POKEMON_DETAIL, GET_TYPES, SORT_BY_ATTACK } from './actionsType';
 
 export function getAllPokemons(){
     return async function(dispatch){   
@@ -67,27 +67,51 @@ export function getNamePokemons(name){
 
 export function createPokemon(pokemon) {
     return async function (dispatch) {
-      try {
-        dispatch({
-            type: CREATE_POKEMON, 
-            payload: true });
-        const response = await axios.post(
-          "http://localhost:3001/pokemons",
-          pokemon
-        );
-      } catch (error) {
-        console.log(error);
-        dispatch({ type: CREATE_POKEMON, payload: false });
-      }
-    };
-  }
+        try {
+            dispatch({ 
+                type: CREATE_POKEMON,
+                payload: true 
+            });
+            const response = await axios.post(
+              "http://localhost:3001/pokemons",
+              pokemon
+            );
+          } catch (error) {
+            console.log(error);
+            dispatch({ 
+                type: CREATE_POKEMON, 
+                payload: false 
+            });
+          }
+        };
+}
 
 export function getPokemonDetail(id){
     return async function(dispatch){
-        axios.get(`/pokemons/${id}`)
-	.then(response=> response.data)
-	.then(data=> dispatch({
-        type: GET_POKEMON_DETAIL, 
-        payload: data}))
+        try{
+            var json = await axios.get(`http://localhost:3001/pokemons/${id}`);
+            dispatch({
+                type: GET_POKEMON_DETAIL,
+                payload: json.data
+                })       
+        } catch(error) {
+        console.log(error)
+        dispatch({
+            type: GET_POKEMON_DETAIL,
+            payload: null
+            })   
+        }
+      }
+}
+
+export function clearState(){
+    return{
+        type: CLEAR_STATE,
+    }
+}
+
+export function clearPokemonById (){
+    return{
+    type: CLEAR_POKEMON_BY_ID,
     }
 }

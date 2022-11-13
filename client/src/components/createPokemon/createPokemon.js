@@ -12,7 +12,6 @@ export default function CreatePokemon(){
 
     const types = useSelector(state => state.types);
 
-        
     const [input, setInput] = useState({
         name: '',
         hp: '',
@@ -35,13 +34,11 @@ export default function CreatePokemon(){
             ...input,
             [e.target.name] : e.target.value
         })
-        console.log(input)
     }
 
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(input)
         dispatch(createPokemon(input))
         alert('Successfully Created Pokemon!!')
         setInput({          //lo seteo en cero nuevamente

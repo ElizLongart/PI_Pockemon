@@ -14,3 +14,31 @@
         display: flex;
         justify-content: center;
 }
+
+.loadingContainer {
+        display: flex;
+        min-height: 70vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+.notFoundContainer {
+        display: flex;
+        min-height: 70vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .notFoundContainer img {
+        max-height: 400px;
+      }
+      
+      .goBack {
+        text-transform: uppercase;
+        margin-top: 50px;
+        margin-right: 10px;
+        font-weight: 500;
+      }
+      

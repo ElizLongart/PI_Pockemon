@@ -8,7 +8,40 @@ const { getAllPokemons } = require('../routesFunctions');
 
 const router = Router();
 
+
 // Configurar los routers
+
+router.post("/pokemons", async (req, res) => {
+	const { name, hp, attack, defense, speed, height, weight, image, type  } =
+	  req.body;
+  
+	try {
+	  const newPokemon = await Pokemon.create({
+		name,
+		hp,
+		attack,
+		defense,
+		speed,
+		height,
+		weight,
+		image,
+	  });
+  
+	  let typeDb = await Type.findAll({
+		where: 
+			{ name: type },
+	  }); 
+	  //vincular el tipo a la otra tabla
+	  newPokemon.addType(typeDb);
+  
+	  console.log(newPokemon);
+  
+	  res.status(201).json(newPokemon);
+	} catch (error) {
+	  console.log(error);
+	  res.status(400).send(error);
+	}
+  });
 
 router.get('/pokemons', async (req, res) => {
 	const name  = req.query.name
@@ -25,7 +58,7 @@ router.get('/pokemons', async (req, res) => {
 		} catch(e) {
 			res.status(400).send(e);		
 		} 
-});
+}); 
 
 router.get('/types', async (req, res)=> {
  	try {
@@ -37,8 +70,10 @@ router.get('/types', async (req, res)=> {
 		return res.json(types);
 	} else {
 		const typeApi = await axios.get('https://pokeapi.co/api/v2/type');
-		const Originaltypes= typeApi.data.results.map((type)=> {return { name: type.name}});
-
+		const Originaltypes= typeApi.data.results.map((type) => 
+			{return { 
+				name: type.name
+			}});
 		Type.bulkCreate(Originaltypes);
 		
 		return res.json(Originaltypes);
@@ -47,43 +82,6 @@ router.get('/types', async (req, res)=> {
 		res.status(400).send(e);
 	} 
 });
-
-/* router.post("/pokemons", async (req, res) => {
-	await addPokemon(req, res);
-  }); */
-
-  router.post("/pokemons", async (req, res, next) => { //Ruta de creacion del pokemon
-	try {
-	  let { name, image, hp, attack, defense, speed, height, weight, type} = req.body //Datos que necesito pedir
-  
-	  const newPokemon = await Pokemon.create({
-		name,
-		image,
-		hp,
-		attack,
-		defense,
-		speed,
-		height,
-		weight,
-	  });
-  
-	  if (!name) return res.json({ info: "El nombre es obligatorio" });
-  
-	  if(Array.isArray(type) && type.length){ //Consulto si lo que me llega en TYPES, es un arreglo y si tiene algo adentro.
-		let dbTypes = await Promise.all( //Armo una variable que dentro tendra una resolucion de promesas
-		  type.map((e) => { // Agarro la data de types y le hago un map para verificar que cada elemento exista en 
-			return Type.findOne({where:{ name: e}}) // nuestra tabla de tipos
-		  })
-		)
-	   await newPokemon.setTypes(dbTypes) //Una vez que se resuelva la promesa del Pokemon.create, le agrego los tipos
-  
-	   return res.send("Pokemon creado exitosamente");
-	  }
-	} catch (err) {
-		console.log(err)
-	  res.status(400).send("Error en data");
-	}
-  })
 
 router.get('/pokemons/:idPokemon', async (req, res) => {
 	const idPokemon = req.params.idPokemon;

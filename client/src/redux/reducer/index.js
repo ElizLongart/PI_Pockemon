@@ -1,10 +1,13 @@
-import { ALPHABETICAL_ORDER, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_POKEMON_DETAIL, GET_TYPES, SORT_BY_ATTACK } from "../actions/actionsType";
+import { ALPHABETICAL_ORDER, CLEAR_POKEMON_BY_ID, CLEAR_STATE, CREATE_POKEMON, FILTER_BY_STORAGE, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_NAME_POKEMONS, GET_POKEMON_DETAIL, GET_TYPES, SORT_BY_ATTACK } from "../actions/actionsType";
 
 
 export const initialState={
     allPokemons: [],
     pokemons: [],
     types: [],
+    pokemonById: [],
+    addedPokemon: false,
+    filteredPokemons: [],
 }
 
 export default function rootReducer (state = initialState, action){
@@ -104,16 +107,27 @@ export default function rootReducer (state = initialState, action){
             
             case CREATE_POKEMON:
                 return {
-                    ...state
+                    ...state,
+                    addedPokemon: action.payload
                 };
 
             case GET_POKEMON_DETAIL:
-                const details = (action.payload.id) ?
-                action.payload :
-                action.payoad[0]
                 return {
                     ...state, 
-                    podemonDetails: details
+                    pokemonById: action.payload,
+                };
+
+            case CLEAR_STATE:
+                return{
+                    ...state,
+                    filteredPokemons: state.allPokemons,
+                    addedPokemon: false,
+                };
+            
+            case CLEAR_POKEMON_BY_ID:
+                return{
+                    ...state,
+                    pokemonById:[],
                 }
         default:
             return state;
