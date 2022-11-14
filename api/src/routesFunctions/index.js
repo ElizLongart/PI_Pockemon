@@ -22,6 +22,7 @@ const getApiInfo = async () => {
 				speed: p.data.stats[4].base_stat,
 				height: p.data.height,
 				weight: p.data.weight,
+				hp: p.data.stats[0].base_stat,
 				created: 'false',
 			})
 		})

@@ -42,54 +42,54 @@ export default function PokemonDetails(){
                 <div className="upper">
                   <div>
                     <img
-                      src={pokemonByID.image}
-                      alt={pokemonByID.name}
+                      src={pokemonByID[0].image}
+                      alt={pokemonByID[0].name}
                       className="pokemonImg"
                     />
                   </div>
                   <div className="stats">
                     <div className="statsCard">
-                      <FaHeart className="icon"/>
+                      <FaHeart className="iconDetail"/>
                       <h4>Health</h4>
-                      <p>{pokemonByID.hp}</p>
+                      <p>{pokemonByID[0].hp}</p>
                     <div className="statsCard">
-                      <AiFillThunderbolt className="icon" />
+                      <AiFillThunderbolt className="iconDetail" />
                       <h4>Speed</h4>
-                      <p>{pokemonByID.speed}</p>
+                      <p>{pokemonByID[0].speed}</p>
                     </div>
                     <div className="statsCard">
-                      <AiFillFire className="icon" />
+                      <AiFillFire className="iconDetail" />
                       <h4>Attack</h4>
-                      <p>{pokemonByID.attack}</p>
+                      <p>{pokemonByID[0].attack}</p>
                     </div>
                     <div className="statsCard">
-                      <BsShieldFillPlus className="icon" />
+                      <BsShieldFillPlus className="iconDetail" />
                       <h4>Defense</h4>
-                      <p>{pokemonByID.defense}</p>
+                      <p>{pokemonByID[0].defense}</p>
                     </div>
                     <div className="statsCard">
-                      <FaRulerVertical className="icon"/>
+                      <FaRulerVertical className="iconDetail"/>
                       <h4>Height</h4>
-                      <p>{pokemonByID.height}</p>
+                      <p>{pokemonByID[0].height}</p>
                     </div>
                     <div className="statsCard">
-                      <GiWeight className="icon" />
+                      <GiWeight className="iconDetail" />
                       <h4>Weight</h4>
-                      <p>{pokemonByID.weight}</p>
+                      <p>{pokemonByID[0].weight}</p>
                     </div>
                   </div>
                 </div>
                 <div className="cardGradient">
-                  <p className="pokemonName">{pokemonByID.name}</p>
+                  <p className="pokemonName">{pokemonByID[0].name}</p>
                   <div className="typeDetails">
-                    {pokemonByID.types &&
-                      pokemonByID.types.map((type) => <p>{type.name}</p>)}
+                    {pokemonByID[0].types &&
+                      pokemonByID[0].types.map((type) => <p>{type.name}</p>)}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="goBack">
-              <Link to="/home" style={{ textDecoration: "none", color: "black" }}>
+            <div className="goBackDetail">
+              <Link to="/home" style={{ textDecoration: "none", color: "blue" }}>
                 <a>Go Back</a>
               </Link>
             </div>
