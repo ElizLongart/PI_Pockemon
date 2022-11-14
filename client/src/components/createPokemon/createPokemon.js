@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { createPokemon, getTypes } from "../../redux/actions";
+import NavBarSearch from "../../components/NavBarSearch/navBarSearch.js"
+import Footer from "../../components/footer/footer.js"
 import './createPokemon.css';
 
 
@@ -56,10 +58,14 @@ export default function CreatePokemon(){
     }
     
     return (
-        <div className="containerForm">
-            <Link to= '/home'><button></button>Return</Link>
-            <h1>Create your pokemon</h1>
-            <form onSubmit={(e)=> handleSubmit(e)}>
+        <div className="allCreate">
+            <NavBarSearch/>
+            <div className="mainCreate">
+            <Link to= '/home'>
+                <button>Return </button>
+            </Link>
+            <form className="containerForm" onSubmit={(e)=> handleSubmit(e)}>
+                <h1 className="tittleForm">Create your pokemon</h1>
                 <div className="form">
                     <label>Name</label>
                     <input 
@@ -181,8 +187,9 @@ export default function CreatePokemon(){
                 </button>
                 </div>
             </form>
-        </div>
-
+             </div>
+{/*         <Footer/>
+ */}        </div>
     )
 
 }

@@ -1,0 +1,19 @@
+.footer{
+    display:flex;
+    align-content: flex-end;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    align-items: center;
+}
+    
+.listaFooter{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.imgFooter{
+    flex: inline;
+    width: 24px
+}

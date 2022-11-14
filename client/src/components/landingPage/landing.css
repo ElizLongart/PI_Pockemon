@@ -29,13 +29,14 @@
   margin-bottom: 0.5rem;
   color: yellow;
   text-decoration: dashed;
+  cursor:pointer,
 }
 
 .start:hover {
     box-shadow: 0 10px 15px -3px rgb(8, 233, 38), 0 4px 6px -2px rgb(12, 248, 12);
     color: rgb(255, 255, 255);
     border: 2px solid rgb(41, 247, 0);
-    cursor: pointer,
+    cursor:pointer,
   }
 
 .welcome{
@@ -47,6 +48,8 @@
              0px 4px 1px rgba(16, 180, 25, 0.5),
              4px 4px 5px rgba(226, 15, 15, 0.938),
              0px 4px 7px rgba(20, 3, 252, 0.993);
+  animation-name: fadeInLeft;
+  animation-duration: 2s;
 }
 .pokemon{
   margin-top: 0px;
@@ -54,11 +57,12 @@
   font-size: 3rem;
   border-color: #e42020;
   margin-top: 0px;
+  animation-name: fadeInLeft;
+  animation-duration: 2s;
   text-shadow: -1px -1px 1px #aaa,
              0px 4px 1px rgba(16, 180, 25, 0.5),
              4px 4px 5px rgba(226, 15, 15, 0.938),
              0px 4px 7px rgba(20, 3, 252, 0.993);
-
 }
 
 .logoLanding{
@@ -66,10 +70,38 @@
   padding-top: 20px;
   width: 500px;
   position:absolute;
+  animation-name: fadeIn;
+  animation-duration: 5s;
 }
 
 .pikachu{
   width: 600px;
   margin-top: -300px; 
   margin-left: 500px; 
+  animation-name: fadeIn;
+  animation-duration: 5s;
+}
+
+/* CSS ANIMATIONS */
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

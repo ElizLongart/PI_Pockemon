@@ -3,10 +3,9 @@
 .card {
     width: 18vw;
     height: 40vh;
-    background-color: #fff;
-    border-radius: 12px;
+    background-image: url('https://i.pinimg.com/564x/2d/e3/8c/2de38c028b4482891a538ec55f7c74ed.jpg');    border-radius: 12px;
     display: flex;
-    margin: 40px 35px 110px 100px; /* Top, Right, Bottom, Left */
+    margin: 40px 35px 110px 100px; 
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -53,7 +52,7 @@
   
   .card:hover .cardGradient {
     background-color: #8bc6ec;
-    background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+    background-image: linear-gradient(135deg, #8bc6ec 0%, #eb2540 100%);
   }
   
   .typesCard {
@@ -61,29 +60,20 @@
     flex-direction: row;
     font-size: 50%;
     text-transform: uppercase;
-  }
+ }
   
   .typesCard p {
-    margin: 10px 10px;
-    padding: 6px;
+    margin: 5px 5px;
     padding: 6px 10px;
     background-image: radial-gradient(
       circle 588px at 31.7% 40.2%,
-      rgba(225, 200, 239, 1) 21.4%,
-      rgba(163, 225, 233, 1) 57.1%
+      rgb(101, 255, 62) 21.4%,
+      rgb(222, 255, 35) 57.1%
     );
     color: #000;
     border-radius: 12px;
     font-weight: 700;
     box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 2.6px;
-  }
-
-  .card button {
-    border-radius: 12px 12px 0px 0;
-    width: 6vw;
-    height: 4vh;
-    border: 1px solid grey;
-    color: black;
   }
   
   .card img {

@@ -1,10 +1,27 @@
+.home{
+        width:100%;
+        height:auto;
+        background-image: url('https://fondosmil.com/fondo/14726.jpg');
+        background-position:60%;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
 .allPokemons{
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 5px;
-        grid-auto-rows: minmax(50px, auto);
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+        grid-auto-rows: minmax(40px, auto);
 }
 
+.pikachuHome{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width:400px;
+        margin-right: 500px;
+}
 .create{
         display: flex;
         justify-content: center;

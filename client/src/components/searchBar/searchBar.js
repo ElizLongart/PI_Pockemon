@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNamePokemons } from "../../redux/actions";
+import { BiSearch } from "react-icons/bi";
+
+import './searchBar.css'
 
 
 export default function SearchBar({setCurrentPage}){
@@ -21,22 +24,21 @@ export default function SearchBar({setCurrentPage}){
     }
 
 return (
-    <div>
+    <div className='containerSearch'>
+        <div className='search'>
         <input
             type = 'text'
-            placeholder="Search..."
+            placeholder="Search Pokemons..."
             onChange= {(e) => handleInputChange(e)}
             id="searchInput"
         />
         <button 
-        type='submit'
         onClick = {(e)=> handledSubmit(e)}
-        id="searchButton"
         >
-            Search
+            <BiSearch />
         </button>
     </div>
-
+    </div>
 
 )
 

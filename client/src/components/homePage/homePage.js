@@ -8,9 +8,11 @@ import './homePage.css';
 import FilterByType from '../filterByType/filterByType';
 import FilterByStorage from '../filterByStorage/filterByStorage';
 import Sort from '../sort/sort';
-import SearchBar from '../searchBar/searchBar.js';
+import NavBarSearch from '../NavBarSearch/navBarSearch.js';
 import PikachuNotFound from '../../assets/pikachusearch.png'
-import Loading from '../../assets/loading.gif'
+import Logo from '../../assets/logo.png'
+import Footer from '../footer/footer';
+
 
 
 export default function HomePage(){
@@ -78,15 +80,16 @@ if (!allPokemons){
             <a onClick={clearHome}>Go Back</a>
           </Link>
         </div>
+        <Footer/>
       </div>
     )
 } else if(allPokemons.length){
     return (
         <div className='home'> 
-            <h1>Pokemon</h1>
+            <NavBarSearch setCurrentPage={setCurrentPage}/>
+            <img src={Logo} alt="Pikachu" className='pikachuHome'/>
             <h3>"God helps the early riser, or in this case he gets his Pokémon!!"</h3>
             <p>Profesor Oak</p>
-            <SearchBar setCurrentPage={setCurrentPage}/>
             <div>
                 <h3> Filter by</h3>
                     <FilterByStorage handleFilterByStorage={handleFilterByStorage} handleClickAll={handleClickAll}/>
@@ -117,12 +120,14 @@ if (!allPokemons){
             pokemonsPerPage={pokemonsPerPage}
             allPokemons={allPokemons.length}
             paginado={paginado}/>   
+            <Footer/>
         </div> 
     )} else{
             return (
                 <div className="loadingContainer">
-                    <img src={Loading} alt="Loading" />
+					<img src="https://c.tenor.com/BINsHS7Uo-0AAAAi/temple-loader.gif" alt="Loading" />
                     <h1>Loading... Please wait</h1>
+                    <Footer/>
                 </div>
             ); 
     }

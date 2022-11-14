@@ -7,8 +7,10 @@ import { AiFillThunderbolt, AiFillFire } from "react-icons/ai";
 import { BsShieldFillPlus } from "react-icons/bs";
 import { GiWeight } from "react-icons/gi";
 import { FaHeart, FaRulerVertical } from "react-icons/fa";
+import Footer from '../footer/footer.js'
 
 import './pokemonDetails.css'
+import NavBarSearch from "../NavBarSearch/navBarSearch";
 
 
 export default function PokemonDetails(){
@@ -24,19 +26,19 @@ export default function PokemonDetails(){
     if(pokemonByID.length === 0){
         return (
             <div>
-              {/*   <Header/> */}
-                <div className="loadingContainer">
-                    <img src={Loading} alt="Loading" />
-                    <h1 className="loadingText">Loading... Please wait</h1>
+              <NavBarSearch /> 
+              <div className="loadingContainer">
+					          <img src="https://c.tenor.com/BINsHS7Uo-0AAAAi/temple-loader.gif" alt="Loading" />
+                    <h1>Loading... Please wait</h1>
                 </div>
-                {/* <Footer style={{ backgroundColor: "#f1f1f1" }} /> */}
+                <Footer/>
             </div>
         );
     } else {
         console.log(pokemonByID);
         return(
             <div className="bigContainer">
-            {/* <Header /> */}
+            <NavBarSearch />
             <div className="containerDetail">
               <div className="cardDetail">
                 <div className="upper">
@@ -95,8 +97,7 @@ export default function PokemonDetails(){
             </div>
             <div className="empty"></div>
             </div>
-{/*             <Footer />
- */}
+           <Footer/>
          </div>
         )
     }

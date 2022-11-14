@@ -1,4 +1,5 @@
 import React from "react";
+import './filterByStorage.css'
 
 export default function FilterByStorage({handleFilterByStorage, handleClickAll}){
     return (
