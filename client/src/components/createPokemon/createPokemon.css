@@ -58,6 +58,9 @@ box-shadow: 2 4px 30px rgba(0.1, 0, 0, 0.1);
 .form option {
   text-transform: capitalize;
 }
+.form .p{
+  font-size: xx-small;
+}
 
 .form select {
   text-transform: capitalize;
