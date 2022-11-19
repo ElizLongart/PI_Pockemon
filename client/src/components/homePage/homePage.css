@@ -1,0 +1,103 @@
+.home{
+        background-image: url('https://fondosmil.com/fondo/14726.jpg');
+        background-position:60%;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
+
+.imgHome{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        position: relative;
+}
+
+.pikachuHome{
+        width:400px;
+}
+
+.pikachuSearch{
+        max-height: 200px;
+        max-width: 200px;
+      }
+      
+
+.Create{
+        display: flex;
+        justify-content: center;
+}
+
+.allPokemons{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+        grid-auto-rows: minmax(40px, auto);
+        text-decoration: none;
+}
+
+.loadingContainer {
+        display: flex;
+        min-height: 70vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgb(108, 117, 20)
+}
+
+.containerFilterSort{
+        display: flex;
+        justify-content: space-between;
+}
+
+.containerFilterHome{
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+}
+
+.containerFilterHome p{
+        color:white;
+        font-weight: bold;
+        font-size:x-large;
+        margin-bottom: 5px;
+}
+
+
+.containerSortHome p{
+        color:white;
+        font-weight: bold;
+        font-size:x-large;
+        margin-bottom: 10px;
+}
+
+.reload{
+        border: none;
+        padding: 2px;
+        border-radius: 16px;
+        color: aqua;
+        text-align: center;
+        box-shadow: rgb(4, 217, 255) 0px 5px 3px;
+        font-weight: bold;
+        font-size: large;
+        background: rgb(63,94,251);
+        background: radial-gradient(circle, rgba(63,94,251,1) 29%, rgba(252,70,107,1) 100%);
+        width: 120px;
+        padding: 1%;
+        height: 35px;
+}
+
+.reload:hover {
+        box-shadow: rgba(255, 230, 0) 0px 5px 3px;
+        color:rgb(255, 230, 0);
+        cursor: pointer
+}
+
+
+
+
+      

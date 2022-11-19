@@ -1,0 +1,23 @@
+.footer{
+    display:flex;
+    align-content: flex-end;
+    justify-content: center;
+    background-color: rgb(94, 50, 255);
+    color: white;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.3px);
+-webkit-backdrop-filter: blur(1.3px);
+border: 1px solid rgba(123, 243, 186, 0.36);
+}
+
+.imgFooter{
+    flex: inline;
+    width: 24px;
+    color:rgb(255, 255, 255);
+    margin-right: 20px;
+}
+
+.footer p{
+    margin-right: 50px;
+}

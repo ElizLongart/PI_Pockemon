@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Roboto:wght@900&display=swap");
+
+.mainCreate {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0%;
+  justify-content: center;
+  width: 100%;
+  background-image: url('https://www.todofondos.net/wp-content/uploads/999x799-PIKACHU-Fondo-de-pantalla.jpg');
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-position:60%;
+  height:700px;
+  padding: 0%;
+}
+
+.containerForm{
+  width: 25%;
+  margin-left: 38%;
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(255, 0, 0, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.form{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tittleForm{
+  font-family: "Roboto", sans-serif;
+}
+
+
+.form input{
+border-radius: 6px;
+display:flex;
+align-items: center;
+text-align: center;
+height: 25px;
+margin-top: 12px;
+box-shadow: 2 4px 30px rgba(0.1, 0, 0, 0.1);
+}
+
+.form option {
+  text-transform: capitalize;
+}
+
+.form select {
+  text-transform: capitalize;
+  margin-top: 12px;
+  border-radius: 6px;
+  height: 25px;
+  box-shadow: 2 4px 30px rgba(0.1, 0, 0, 0.1);
+}
+
+.btn{
+  border: none;
+  padding: 2px;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  box-shadow: rgb(255, 4, 4) 0px 5px 3px;
+  font-weight: bold;
+  font-size: large;
+  background-color: #ffd900;
+  width: 120px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer
+}
+
+.btn:hover {
+  background-color: #3ffe39;
+  box-shadow: rgb(255, 238, 0) 0px 5px 3px;
+}
+

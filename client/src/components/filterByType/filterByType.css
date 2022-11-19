@@ -1,0 +1,27 @@
+.containerType{
+    display: flex;
+    justify-content: center;
+}
+
+.containerType:hover{
+    background-color: rgb(208, 255, 0);
+}
+
+.filterType{
+    margin-top: -38px;
+	height: 35px;
+	width: 160px;
+	text-align: center;
+	font-size: 20px;
+	border: none;
+	background-color: rgba(1, 58, 103, 1);
+	color: rgb(0, 187, 253);
+    border-radius: 12px;
+	color: rgb(0, 215, 253);
+    box-shadow: rgb(4, 217, 255) 0px 5px 3px;
+}
+
+.filterType:hover{
+    background-color: #FEDB39;
+	color: rgba(2, 0, 36, 1);
+}

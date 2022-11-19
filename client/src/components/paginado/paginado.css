@@ -1,0 +1,30 @@
+.paginado{
+    display: flex;
+    justify-content: center;
+}
+
+.pageNumber{
+    --size: 32px;
+    --margin: 6px;
+    margin: 0 var(--margin);
+    border-radius: 6px;
+    background: #202020;
+    max-width: auto;
+    min-width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 0 6px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+.pageNumber:hover {
+    box-shadow: rgb(0, 255, 0) 0px 5px 3px;
+    color:rgb(0, 255, 0)
+}
